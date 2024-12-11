@@ -1,0 +1,11 @@
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+@function spacing($multiplier) {
+  @return $multiplier * $spacing-unit;
+}
+
+@function breakpoint($size) {
+  @return map-get($breakpoints, $size);
+}
