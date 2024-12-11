@@ -1,1 +1,5 @@
-$font-family-base: "Arial, sans-serif";
+@use "../abstracts" as *;
+
+body {
+  font-family: $font-family-base;
+}
