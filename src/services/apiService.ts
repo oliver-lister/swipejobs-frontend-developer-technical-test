@@ -14,7 +14,10 @@ class ApiService {
       const response = await this.client.get(`/worker/${workerId}/profile`);
       return response.data;
     } catch (error) {
-      this.handleError(error, "Failed to fetch profile");
+      this.handleError(
+        error,
+        `Failed to fetch profile for workerId ${workerId}`
+      );
     }
   }
 
@@ -52,7 +55,7 @@ class ApiService {
   handleError(error: unknown, customMessage: string): never {
     if (axios.isAxiosError(error) && error.response) {
       console.error(
-        `${customMessage}: ${error.response.status} - ${error.response.data}`
+        `${customMessage}: ${error.response.status} - ${error.response.data.error}`
       );
     } else {
       console.error(
@@ -64,4 +67,4 @@ class ApiService {
   }
 }
 
-export default new ApiService("https://test.swipejobs.com/api");
+export default new ApiService(import.meta.env.VITE_BACKEND_URL);
