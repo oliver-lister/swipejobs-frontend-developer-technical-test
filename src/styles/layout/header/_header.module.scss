@@ -1,12 +1,13 @@
 @use "../../abstracts/" as *;
 
 .header {
-  background-color: color(background-secondary);
+  background-color: color(background-contrast);
 
   &__inner {
     @include container;
     @include flex-between;
-    padding: spacing(sm);
+    padding-inline: spacing(sm);
+    padding-block: spacing(md);
   }
 
   &__error {

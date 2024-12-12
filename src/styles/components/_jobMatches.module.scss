@@ -1,4 +1,7 @@
+@use "../abstracts/" as *;
+
 .matches {
   display: grid;
   grid-template-columns: 1fr;
+  gap: spacing(lg);
 }

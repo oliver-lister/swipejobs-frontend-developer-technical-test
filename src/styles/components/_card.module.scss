@@ -3,8 +3,69 @@
 .card {
   display: grid;
   overflow: hidden;
+  background-color: color(background-primary);
   border-radius: border-radius(sm);
 
-  &__image {
+  & .image {
+    & img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  & .header {
+    padding-block: spacing(xs);
+    padding-inline: spacing(sm);
+
+    &__title {
+      font-size: text-size(lg);
+      font-weight: font-weight(bold);
+    }
+
+    &__company {
+      font-size: text-size(sm);
+      line-height: line-height(tight);
+      font-weight: font-weight(medium);
+    }
+  }
+
+  & .body {
+    & .hero {
+      background-color: color(accent);
+      padding-block: spacing(xs);
+      padding-inline: spacing(sm);
+      @include flex-between;
+
+      &__left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &__right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      &__title {
+        font-size: text-size(xs);
+        font-weight: font-weight(bold);
+      }
+
+      &__amount {
+        color: color(text-contrast);
+        line-height: line-height(tight);
+        font-size: text-size(2xl);
+        font-weight: font-weight(bold);
+        display: flex;
+        gap: 3px;
+      }
+
+      &__sign {
+        padding-top: 2px;
+        font-size: text-size(lg);
+      }
+    }
   }
 }
