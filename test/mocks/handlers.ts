@@ -83,7 +83,7 @@ export const handlers = [
       return HttpResponse.json(mockMatches);
     }
   ),
-  http.post<PostAcceptMatchParams, undefined, PostAcceptMatchResponseBody>(
+  http.get<PostAcceptMatchParams, undefined, PostAcceptMatchResponseBody>(
     `${BASE_URL}/worker/:workerId/job/:jobId/accept`,
     ({ params }) => {
       const { workerId, jobId } = params;
@@ -108,7 +108,7 @@ export const handlers = [
       return HttpResponse.json(mockAcceptMatchResponseSuccess);
     }
   ),
-  http.post<PostRejectMatchParams, undefined, PostRejectMatchResponseBody>(
+  http.get<PostRejectMatchParams, undefined, PostRejectMatchResponseBody>(
     `${BASE_URL}/worker/:workerId/job/:jobId/reject`,
     ({ params }) => {
       const { workerId, jobId } = params;

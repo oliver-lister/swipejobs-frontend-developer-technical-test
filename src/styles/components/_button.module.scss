@@ -18,8 +18,12 @@
     cursor: pointer;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     scale: 0.95;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

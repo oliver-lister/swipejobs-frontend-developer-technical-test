@@ -50,9 +50,10 @@ class ApiService {
   async acceptJob(workerId: string, jobId: string) {
     try {
       await this.isJobMatchForWorker(workerId, jobId);
-      const response = await this.client.post(
+      const response = await this.client.get(
         `/worker/${workerId}/job/${jobId}/accept`
       );
+      if (response.data.message) throw response.data.message;
       return response.data;
     } catch (error) {
       this.handleError(error, `Failed to accept job ${jobId}`);
@@ -62,9 +63,11 @@ class ApiService {
   async rejectJob(workerId: string, jobId: string) {
     try {
       await this.isJobMatchForWorker(workerId, jobId);
-      const response = await this.client.post(
+      const response = await this.client.get(
         `/worker/${workerId}/job/${jobId}/reject`
       );
+
+      if (response.data.message) throw response.data.message;
       return response.data;
     } catch (error) {
       this.handleError(error, "Failed to reject job");

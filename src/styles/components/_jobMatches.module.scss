@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: breakpoint(lg)) {
+  @media (min-width: breakpoint(xl)) {
     grid-template-columns: repeat(3, 1fr);
   }
 }

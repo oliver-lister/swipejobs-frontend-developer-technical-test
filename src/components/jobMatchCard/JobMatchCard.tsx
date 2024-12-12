@@ -4,20 +4,28 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 import { FaTools } from "react-icons/fa";
 import { IoPersonCircleOutline } from "react-icons/io5";
-
+import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import HeroSection from "./HeroSection";
 import InfoSection from "./InfoSection";
 import { formatShift } from "../../lib/utils/formatShift";
 import styles from "../../styles/components/_jobMatchCard.module.scss";
 import { formatNumber } from "../../lib/utils/formatNumber";
 import Button from "../Button";
+import useMatch from "../../hooks/useMatch";
+import Loader from "../Loader";
 
 type JobMatchCardProps = {
   match: WorkerMatch;
+  workerId: string;
   timeZone?: string;
 };
 
-const JobMatchCard: React.FC<JobMatchCardProps> = ({ match, timeZone }) => {
+const JobMatchCard: React.FC<JobMatchCardProps> = ({
+  match,
+  timeZone,
+  workerId,
+}) => {
   const wage = (match.wagePerHourInCents / 100).toFixed(2);
 
   const milesToDecimalPoint = (decimalPoints: number) =>
@@ -28,6 +36,9 @@ const JobMatchCard: React.FC<JobMatchCardProps> = ({ match, timeZone }) => {
       ? formatNumber(match.company.reportTo.phone)
       : ""
   }`;
+
+  const { acceptJob, rejectJob, loading, accepted, rejected, error } =
+    useMatch(workerId);
 
   return (
     <Card key={match.jobId}>
@@ -76,8 +87,25 @@ const JobMatchCard: React.FC<JobMatchCardProps> = ({ match, timeZone }) => {
         </Card.Group>
       </Card.Body>
       <Card.Footer className={styles.footer}>
-        <Button variant="outline">No Thanks</Button>
-        <Button variant="accent">I'll Take It</Button>
+        <div className={styles.footer__buttons}>
+          <Button
+            variant="outline"
+            onClick={() => rejectJob(match.jobId)}
+            disabled={loading}
+          >
+            {loading ? <Loader size={20} /> : rejected ? <ImCross /> : null}
+            {loading ? "Loading" : rejected ? "Rejected" : "No Thanks"}
+          </Button>
+          <Button
+            variant="accent"
+            onClick={() => acceptJob(match.jobId)}
+            disabled={loading || accepted}
+          >
+            {loading ? <Loader size={20} /> : accepted ? <FaCheck /> : null}
+            {loading ? "Loading" : accepted ? "Accepted" : "I'll Take It"}
+          </Button>
+        </div>
+        {error ? <p className={styles.error__text}>Error: {error}</p> : null}
       </Card.Footer>
     </Card>
   );

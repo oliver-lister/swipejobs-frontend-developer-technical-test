@@ -30,7 +30,12 @@ const useWorker = (workerId: string) => {
     fetchWorkerData();
   }, [workerId]);
 
-  return { profile, matches, loading, error };
+  return {
+    profile,
+    matches,
+    loading,
+    error,
+  };
 };
 
 export default useWorker;

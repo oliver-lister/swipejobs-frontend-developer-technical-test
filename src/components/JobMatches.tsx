@@ -1,26 +1,25 @@
-import React from "react";
-import { WorkerMatch } from "../lib/types/workerTypes";
 import styles from "../styles/components/_jobMatches.module.scss";
 import Skeleton from "./Skeleton";
 import JobMatchCard from "./jobMatchCard/JobMatchCard";
+import useWorker from "../hooks/useWorker";
 
-type JobMatchesProps = {
-  matches: WorkerMatch[];
-  loading: boolean;
-  timeZone?: string;
-};
+const JobMatches = () => {
+  const { matches, loading, profile } = useWorker(
+    import.meta.env.VITE_WORKER_ID
+  );
 
-const JobMatches: React.FC<JobMatchesProps> = ({
-  matches,
-  loading,
-  timeZone,
-}) => {
   return (
     <section className={styles.matches}>
       {loading
         ? Array.from({ length: 4 }).map((_, index) => <Skeleton key={index} />)
-        : matches.map((match) => (
-            <JobMatchCard key={match.jobId} match={match} timeZone={timeZone} />
+        : profile &&
+          matches.map((match) => (
+            <JobMatchCard
+              key={match.jobId}
+              match={match}
+              workerId={profile.workerId}
+              timeZone={profile.address.zoneId}
+            />
           ))}
     </section>
   );

@@ -83,6 +83,16 @@ a:hover {
 }
 
 .footer {
-  display: flex;
-  gap: spacing(xs);
+  display: grid;
+  gap: spacing(sm);
+
+  &__buttons {
+    display: flex;
+    gap: spacing(xs);
+  }
+
+  & .error__text {
+    color: color(danger);
+    font-size: text-size(xs);
+  }
 }
