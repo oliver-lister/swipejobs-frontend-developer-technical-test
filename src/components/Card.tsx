@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/components/_card.module.scss";
+import { NavLink } from "react-router";
 
 type CardProps = {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ type CardComponent = React.FC<CardProps> & {
   Body: React.FC<CardBodyProps>;
   Group: React.FC<CardGroupProps>;
   Section: React.FC<CardSectionProps>;
+  Footer: React.FC<CardFooterProps>;
 };
 
 const Card: CardComponent = ({ children, className = "", ...props }) => {
@@ -76,13 +78,33 @@ const CardGroup: React.FC<CardGroupProps> = ({ children, className = "" }) => {
 type CardSectionProps = {
   children: React.ReactNode;
   className?: string;
+  href?: string;
 };
 
 const CardSection: React.FC<CardSectionProps> = ({
   children,
   className = "",
+  href,
 }) => {
+  if (href)
+    return (
+      <NavLink to={href} className={`${styles.section} ${className}`}>
+        {children}
+      </NavLink>
+    );
   return <div className={`${styles.section} ${className}`}>{children}</div>;
+};
+
+type CardFooterProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const CardFooter: React.FC<CardFooterProps> = ({
+  children,
+  className = "",
+}) => {
+  return <div className={`${styles.footer} ${className}`}>{children}</div>;
 };
 
 Card.Image = CardImage;
@@ -90,5 +112,6 @@ Card.Header = CardHeader;
 Card.Body = CardBody;
 Card.Group = CardGroup;
 Card.Section = CardSection;
+Card.Footer = CardFooter;
 
 export default Card;

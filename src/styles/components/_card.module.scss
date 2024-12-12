@@ -1,12 +1,14 @@
 @use "../abstracts/" as *;
 
 .card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background-color: color(background-primary);
   border-radius: border-radius(sm);
 
   & .image {
+    min-height: 100px;
     & img {
       object-fit: contain;
       width: 100%;
@@ -30,9 +32,17 @@
   }
 
   & .body {
-    & .section {
-      padding-block: spacing(xs);
-      padding-inline: spacing(sm);
+    & .group {
+      & .section {
+        padding-block: spacing(xs);
+        padding-inline: spacing(md);
+      }
     }
+  }
+
+  & .footer {
+    padding-inline: spacing(md);
+    padding-block: spacing(md);
+    margin-top: auto;
   }
 }

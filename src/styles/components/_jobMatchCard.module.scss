@@ -1,8 +1,9 @@
 @use "../abstracts/" as *;
 
 .hero {
-  background-color: color(accent);
-  @include flex-between;
+  &__inner {
+    @include flex-between;
+  }
 
   &__left {
     display: flex;
@@ -34,4 +35,54 @@
     padding-top: 2px;
     font-size: text-size(lg);
   }
+  background-color: color(accent);
+}
+
+a:hover {
+  background-color: rgba(color(secondary), 0.7);
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: spacing(md);
+
+  &:not(:nth-child(1)) {
+    border-top: 1px solid color(secondary);
+  }
+
+  &__main {
+    display: grid;
+  }
+
+  &__title {
+    font-weight: font-weight(bold);
+    font-size: text-size(sm);
+  }
+
+  &__text {
+    &:nth-child(1) {
+      line-height: line-height(tight);
+    }
+    font-size: text-size(sm);
+  }
+
+  &__text_xs {
+    font-size: text-size(xs);
+    line-height: line-height(loose);
+  }
+
+  &__chevron {
+    margin-left: auto;
+  }
+
+  &__list {
+    list-style-type: "-";
+    padding-left: spacing(xs);
+  }
+}
+
+.footer {
+  display: flex;
+  gap: spacing(xs);
 }

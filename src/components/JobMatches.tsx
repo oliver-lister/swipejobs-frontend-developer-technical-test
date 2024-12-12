@@ -2,7 +2,7 @@ import React from "react";
 import { WorkerMatch } from "../lib/types/workerTypes";
 import styles from "../styles/components/_jobMatches.module.scss";
 import Skeleton from "./Skeleton";
-import JobMatchCard from "./JobMatchCard";
+import JobMatchCard from "./jobMatchCard/JobMatchCard";
 
 type JobMatchesProps = {
   matches: WorkerMatch[];
