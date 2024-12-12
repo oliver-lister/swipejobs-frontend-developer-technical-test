@@ -1,0 +1,11 @@
+@use "../abstracts/" as *;
+
+.main {
+  background-color: color(secondary);
+  min-height: 100vh;
+
+  &__inner {
+    @include container;
+    padding: spacing(sm);
+  }
+}

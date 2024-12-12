@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.card {
+  display: grid;
+  overflow: hidden;
+  border-radius: border-radius(sm);
+
+  &__image {
+  }
+}

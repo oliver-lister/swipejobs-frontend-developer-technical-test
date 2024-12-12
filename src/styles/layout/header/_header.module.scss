@@ -2,15 +2,15 @@
 
 .header {
   background-color: color(background-secondary);
-}
 
-.header__inner {
-  @include container;
-  @include flex-between;
-  padding: spacing(sm);
-}
+  &__inner {
+    @include container;
+    @include flex-between;
+    padding: spacing(sm);
+  }
 
-.header__error {
-  color: color(danger);
-  font-size: text-size(xs);
+  &__error {
+    color: color(danger);
+    font-size: text-size(xs);
+  }
 }
