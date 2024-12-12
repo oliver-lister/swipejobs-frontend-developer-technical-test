@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import apiService from "../services/apiService";
-import { Job, WorkerProfile } from "../lib/types/workerTypes";
+import { WorkerMatch, WorkerProfile } from "../lib/types/workerTypes";
 
 const useWorker = (workerId: string) => {
   const [profile, setProfile] = useState<WorkerProfile | null>(null);
-  const [matches, setMatches] = useState<Job[]>([]);
+  const [matches, setMatches] = useState<WorkerMatch[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
