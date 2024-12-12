@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "../styles/components/_card.module.scss";
 
 type CardProps = {
@@ -8,7 +9,9 @@ type CardProps = {
 type CardComponent = React.FC<CardProps> & {
   Image: React.FC<CardImageProps>;
   Header: React.FC<CardHeaderProps>;
-  Body: CardBodyComponent;
+  Body: React.FC<CardBodyProps>;
+  Group: React.FC<CardGroupProps>;
+  Section: React.FC<CardSectionProps>;
 };
 
 const Card: CardComponent = ({ children, className = "", ...props }) => {
@@ -36,87 +39,56 @@ const CardImage: React.FC<CardImageProps> = ({ src, alt, className = "" }) => {
 type CardHeaderProps = {
   jobTitleName: string;
   companyName: string;
+  className?: string;
 };
 
 const CardHeader: React.FC<CardHeaderProps> = ({
   jobTitleName,
   companyName,
+  className = "",
 }) => {
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} ${className}`}>
       <p className={styles.header__title}>{jobTitleName}</p>
       <p className={styles.header__company}>{companyName}</p>
     </div>
   );
 };
 
-type CardBodyProps = { children: React.ReactNode; className?: string };
-
-type CardBodyComponent = React.FC<CardBodyProps> & {
-  Hero: React.FC<CardBodyHeroProps>;
-  Section: React.FC<CardBodySectionProps>;
-};
-
-const CardBody: CardBodyComponent = ({
-  children,
-  className = "",
-  ...props
-}) => {
-  return (
-    <div className={`${styles.body} ${className}`} {...props}>
-      {children}
-    </div>
-  );
-};
-
-type CardBodyHeroProps = {
-  distance: string;
-  hourlyRate: string;
+type CardBodyProps = {
+  children: React.ReactNode;
   className?: string;
 };
 
-const CardBodyHero: React.FC<CardBodyHeroProps> = ({
-  distance,
-  hourlyRate,
-  className = "",
-  ...props
-}) => {
-  return (
-    <div className={`${styles.hero} ${className}`} {...props}>
-      <div className={styles.hero__left}>
-        <p className={styles.hero__title}>Distance</p>
-        <p className={styles.hero__amount}>{distance} miles</p>
-      </div>
-      <div className={styles.hero__right}>
-        <p className={styles.hero__title}>Hourly Rate</p>
-        <p className={styles.hero__amount}>
-          <span className={styles.hero__sign}>$</span>
-          {hourlyRate}
-        </p>
-      </div>
-    </div>
-  );
+const CardBody: React.FC<CardBodyProps> = ({ children, className = "" }) => {
+  return <div className={`${styles.body} ${className}`}>{children}</div>;
 };
 
-type CardBodySectionProps = { children: React.ReactNode; className?: string };
+type CardGroupProps = {
+  children: React.ReactNode;
+  className?: string;
+};
 
-const CardBodySection: React.FC<CardBodySectionProps> = ({
+const CardGroup: React.FC<CardGroupProps> = ({ children, className = "" }) => {
+  return <div className={`${styles.group} ${className}`}>{children}</div>;
+};
+
+type CardSectionProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const CardSection: React.FC<CardSectionProps> = ({
   children,
   className = "",
-  ...props
 }) => {
-  return (
-    <div className={`${styles.body__section} ${className}`} {...props}>
-      {children}
-    </div>
-  );
+  return <div className={`${styles.section} ${className}`}>{children}</div>;
 };
-
-CardBody.Hero = CardBodyHero;
-CardBody.Section = CardBodySection;
 
 Card.Image = CardImage;
 Card.Header = CardHeader;
 Card.Body = CardBody;
+Card.Group = CardGroup;
+Card.Section = CardSection;
 
 export default Card;
