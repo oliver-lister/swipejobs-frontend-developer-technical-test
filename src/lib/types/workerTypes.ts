@@ -35,7 +35,7 @@ type JobTitle = {
   imageUrl: string;
 };
 
-export type Job = {
+export type WorkerMatch = {
   jobId: string;
   jobTitle: JobTitle;
   company: JobCompany;
@@ -46,3 +46,17 @@ export type Job = {
   branchPhoneNumber: string;
   requirements?: string[];
 };
+
+export type ErrorResponse = {
+  success: boolean;
+  message: string;
+  errorCode: string;
+};
+
+export type SuccessResponse = {
+  success: boolean;
+};
+
+export type AcceptMatchResponse = SuccessResponse | ErrorResponse;
+
+export type RejectMatchResponse = SuccessResponse | ErrorResponse;
