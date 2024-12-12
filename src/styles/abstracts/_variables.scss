@@ -1,13 +1,15 @@
 $colors: (
   text-primary: #000000,
   text-secondary: #bcbcbc,
+  text-contrast: #ffffff,
   background: #ffffff,
+  background-secondary: #000000,
   accent: #30d5ab,
   secondary: #eeeeee,
   danger: #dc3545,
 );
 
-$font-family-base: Arial, sans-serif;
+$font-family-base: Inter, Arial, sans-serif;
 
 $font-weight: (
   light: 300,

@@ -1,0 +1,7 @@
+.logo {
+  width: clamp(125px, 30%, 175px);
+
+  & img {
+    object-fit: contain;
+  }
+}
