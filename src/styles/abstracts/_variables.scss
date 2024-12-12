@@ -1,3 +1,5 @@
+@use "mixins" as *;
+
 $colors: (
   text-primary: #000000,
   text-secondary: #bcbcbc,
@@ -60,3 +62,7 @@ $breakpoint: (
   xl: 1200px,
   2xl: 1400px,
 );
+
+$animation-spin: rotation 1s linear infinite;
+
+@include rotation;

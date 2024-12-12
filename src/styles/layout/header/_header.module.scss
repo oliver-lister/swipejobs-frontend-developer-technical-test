@@ -9,3 +9,8 @@
   @include flex-between;
   padding: spacing(sm);
 }
+
+.header__error {
+  color: color(danger);
+  font-size: text-size(xs);
+}

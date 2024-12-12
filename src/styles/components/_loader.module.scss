@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.loader {
+  border: 3px solid color(text-contrast);
+  border-bottom-color: transparent;
+  border-radius: border-radius(circle);
+  display: inline-block;
+  box-sizing: border-box;
+  animation: $animation-spin;
+}

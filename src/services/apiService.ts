@@ -73,20 +73,15 @@ class ApiService {
 
   handleError(error: unknown, customMessage: string): never {
     if (axios.isAxiosError(error) && error.response) {
-      console.error(
-        `${customMessage}: ${error.response.status} - ${error.response.data.message}`
-      );
-      throw new Error(error.response.data.message);
+      const errorMessage = `${customMessage}: ${error.response.status} - ${error.response.data.message}`;
+      console.error(errorMessage);
+      throw new Error(errorMessage);
     } else {
-      console.error(
-        customMessage,
+      const errorMessage = `${customMessage}: ${
         error instanceof Error ? error.message : String(error)
-      );
-      throw new Error(
-        `${customMessage}: ${
-          error instanceof Error ? error.message : String(error)
-        }`
-      );
+      }`;
+      console.error(errorMessage);
+      throw new Error(errorMessage);
     }
   }
 }

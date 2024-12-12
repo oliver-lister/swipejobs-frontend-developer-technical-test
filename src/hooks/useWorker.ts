@@ -15,10 +15,13 @@ const useWorker = (workerId: string) => {
       try {
         const profileData = await apiService.getWorkerProfile(workerId);
         const matchesData = await apiService.getWorkerMatches(workerId);
+
         setProfile(profileData);
         setMatches(matchesData);
       } catch (err) {
         setError(err instanceof Error ? err.message : String(err));
+        setProfile(null);
+        setMatches([]);
       } finally {
         setLoading(false);
       }
