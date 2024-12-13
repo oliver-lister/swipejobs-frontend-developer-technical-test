@@ -8,6 +8,7 @@
     @include flex-between;
     padding-inline: spacing(sm);
     padding-block: spacing(md);
+    color: color(text-contrast);
   }
 
   &__error {
