@@ -1,50 +1,92 @@
-# React + TypeScript + Vite
+# Swipejobs Technical Test Solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This repository contains my solution for the Swipejobs Frontend Developer
+technical test. The project showcases my ability to develop a frontend
+application using React, TypeScript, and related tools, while demonstrating
+skills in testing, state management, styling, and containerization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Job Matches**: Renders a grid of cards displaying job matches for a worker,
+  including formatted details like job title, wage, distance, requirements, and
+  shift schedules retrieved from the test API.
+- **User Interaction**: Allows workers to accept or reject job offers with
+  real-time feedback on the actions, displaying user friendly error messages if
+  present.
+- **Skeleton Loading**: Provides a loading state with skeleton components for a
+  polished user experience.
+- **Responsive Design**: Built with a mobile-first approach, ensuring usability
+  on all screen sizes.
+- **Custom Hooks**: Implements hooks like `useWorker` and `useMatch` for
+  managing data fetching and interactions.
+- **Unit Testing**: Comprehensive unit tests written with Vitest to ensure code
+  quality and reliability.
+- **CI Workflow / Docker Support**: Fully containerized application setup,
+  combined with a Github Actions CI Workflow to run test coverage on push to the
+  main branch.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+### Frontend
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**: Library for building user interfaces.
+- **TypeScript**: Type-safe JavaScript for better developer experience and
+  maintainability.
+- **SASS/SCSS**: Modular styling with variables, mixins, and reusable styles.
+- **React Icons**: Icon library for UI enhancements.
+- **Axios**: A promise-based HTTP Client for node.js and the browser.
+
+### Testing
+
+- **Vitest**: Testing framework for fast and reliable unit tests.
+- **Testing Library**: Utilities for testing React components.
+
+### Tooling
+
+- **Vite**: Modern build tool for a fast development experience.
+- **Docker**: Containerization for development and deployment.
+- **GitHub Actions**: CI pipeline for testing and log collection.
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js**: Version 18 or later
+- **Docker**: Installed and running
+- **Git**: Installed for repository cloning
+
+### Setup Instructions
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/oliver-lister/swipejobs-frontend-developer-technical-test.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Navigate to the project directory**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+cd swipejobs-frontend-developer-technical-test
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+3. **Install dependencies**:
+
+```bash
+npm install
+```
+
+4. **Run development server**:
+
+```bash
+npm run dev
+```
+
+### Running Tests
+
+To run tests and check coverage, use:
+
+```bash
+npm run coverage
 ```
