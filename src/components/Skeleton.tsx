@@ -1,9 +1,7 @@
-import React from 'react'
+import styles from "../styles/components/_skeleton.module.scss";
 
 const Skeleton = () => {
-  return (
-    <div>Skeleton</div>
-  )
-}
+  return <span className={styles.skeleton} aria-label="Skeleton" />;
+};
 
-export default Skeleton
+export default Skeleton;

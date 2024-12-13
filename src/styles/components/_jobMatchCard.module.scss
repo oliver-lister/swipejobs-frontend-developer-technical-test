@@ -1,6 +1,8 @@
 @use "../abstracts/" as *;
 
 .hero {
+  background-color: color(accent);
+
   &__inner {
     @include flex-between;
   }
@@ -35,11 +37,6 @@
     padding-top: 2px;
     font-size: text-size(lg);
   }
-  background-color: color(accent);
-}
-
-a:hover {
-  background-color: rgba(color(secondary), 0.7);
 }
 
 .section {
@@ -92,7 +89,12 @@ a:hover {
   }
 
   & .error__text {
-    color: color(danger);
+    background-color: color(danger);
+    border-radius: border-radius(sm);
+    padding: spacing(sm);
+    display: block;
+    color: color(text-contrast);
     font-size: text-size(xs);
+    font-weight: font-weight(bold);
   }
 }

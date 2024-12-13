@@ -5,6 +5,7 @@ import { MockInstance } from "vitest";
 import { WorkerMatch, WorkerProfile } from "../../src/lib/types/workerTypes";
 import { mockMatches, mockProfile } from "../mocks/data";
 import { createFullName } from "../../src/lib/utils/createFullName";
+import { BrowserRouter } from "react-router";
 
 describe("Header Component", () => {
   let useWorkerSpy: MockInstance<
@@ -32,7 +33,7 @@ describe("Header Component", () => {
       matches: mockMatches,
     });
 
-    render(<Header />);
+    render(<Header />, { wrapper: BrowserRouter });
 
     const logo = screen.getByAltText("swipejobs Logo");
     expect(logo).toBeVisible();
@@ -51,7 +52,7 @@ describe("Header Component", () => {
       matches: [],
     });
 
-    render(<Header />);
+    render(<Header />, { wrapper: BrowserRouter });
 
     const loader = screen.getByLabelText("Loading");
     expect(loader).toBeVisible();
@@ -65,7 +66,7 @@ describe("Header Component", () => {
       matches: [],
     });
 
-    render(<Header />);
+    render(<Header />, { wrapper: BrowserRouter });
 
     const errorMessage = screen.getByText("Error: Could not fetch profile");
     expect(errorMessage).toBeVisible();

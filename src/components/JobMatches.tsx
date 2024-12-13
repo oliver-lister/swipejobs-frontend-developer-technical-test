@@ -11,7 +11,7 @@ const JobMatches = () => {
   return (
     <section className={styles.matches}>
       {loading
-        ? Array.from({ length: 4 }).map((_, index) => <Skeleton key={index} />)
+        ? Array.from({ length: 6 }).map((_, index) => <Skeleton key={index} />)
         : profile &&
           matches.map((match) => (
             <JobMatchCard

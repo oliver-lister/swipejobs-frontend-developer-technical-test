@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -23,5 +25,20 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+}
+
+@mixin skeleton-animation {
+  background: $skeleton-gradient;
+  background-size: 200% 100%;
+  animation: skeleton-animation $skeleton-animation-duration infinite linear;
+}
+
+@keyframes skeleton-animation {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
   }
 }

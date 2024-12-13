@@ -1,0 +1,11 @@
+@use "../abstracts/" as *;
+
+.link {
+  font-weight: font-weight(bold);
+  font-size: text-size(lg);
+
+  &:hover {
+    text-decoration: underline;
+    color: color(accent);
+  }
+}

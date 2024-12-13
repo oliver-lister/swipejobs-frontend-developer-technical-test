@@ -88,7 +88,10 @@ const CardSection: React.FC<CardSectionProps> = ({
 }) => {
   if (href)
     return (
-      <NavLink to={href} className={`${styles.section} ${className}`}>
+      <NavLink
+        to={href}
+        className={`${styles.section} ${styles.link} ${className}`}
+      >
         {children}
       </NavLink>
     );

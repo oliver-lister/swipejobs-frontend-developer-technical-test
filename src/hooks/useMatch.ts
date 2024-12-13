@@ -12,7 +12,6 @@ const useMatch = (workerId: string) => {
       setLoading(true);
       setError(null);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
         if (!workerId) throw new Error("Worker is not logged in");
         await apiService.acceptJob(workerId, jobId);
         setAccepted(true);
@@ -31,8 +30,6 @@ const useMatch = (workerId: string) => {
       setLoading(true);
       setError(null);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
         if (!workerId) throw new Error("Worker is not logged in");
         await apiService.rejectJob(workerId, jobId);
         setRejected(true);

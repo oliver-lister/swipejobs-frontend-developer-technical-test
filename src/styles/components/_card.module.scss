@@ -15,6 +15,10 @@
     }
   }
 
+  & a:hover {
+    background-color: rgba(color(secondary), 0.7);
+  }
+
   & .header {
     padding-block: spacing(xs);
     padding-inline: spacing(sm);
