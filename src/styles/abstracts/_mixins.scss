@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "./variables" as *;
 
 @mixin flex-center {
   display: flex;
@@ -17,15 +17,17 @@
   max-width: $max-width;
 }
 
-@mixin rotation {
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin animate-rotate {
+  animation: rotation 1s linear infinite;
 }
 
 @mixin skeleton-animation {
