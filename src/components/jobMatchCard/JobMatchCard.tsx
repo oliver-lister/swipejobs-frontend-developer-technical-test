@@ -41,7 +41,7 @@ const JobMatchCard: React.FC<JobMatchCardProps> = ({
     useMatch(workerId);
 
   return (
-    <Card key={match.jobId}>
+    <Card key={match.jobId} data-testid="job-match-card">
       <Card.Image src={match.jobTitle.imageUrl} alt={match.jobTitle.name} />
       <Card.Body>
         <Card.Header
