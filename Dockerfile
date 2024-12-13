@@ -1,5 +1,5 @@
-# Use Node.js LTS version as the base image
-FROM node:18
+# Use Node.js version as the base image
+FROM node:alpine
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,8 +16,5 @@ COPY . .
 # Build the application for production
 RUN npm run build
 
-# Expose the default port for the server
-EXPOSE 4173
-
-# Run the test coverage script and then start the production server
-CMD ["sh", "-c", "npm run coverage && npm run preview -- --host"]
+# Run the test coverage script
+CMD ["sh", "-c", "npm run coverage"]
